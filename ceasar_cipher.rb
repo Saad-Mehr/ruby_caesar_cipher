@@ -5,18 +5,12 @@ def ceasar_cipher(decrypted_text, shift)
     decrypted_text.each_byte do |byte|
         if byte >= 65 && byte <= 90
             byte += shift
-            if byte > 90
-                byte -= 26
-            end
+            byte -= 26 if byte > 90
         elsif byte >= 95 && byte <= 122
             byte += shift
-                if byte > 122
-                    byte -= 26
-                end
+            byte -= 26 if byte > 122
         end
-        new_array.push(byte)
+        encrypted_byte_array.push(byte)
     end
-    encrypted_text = new_array.pack('c*')
-    return encrypted_text
+    return encrypted_byte_array.pack('c*')
 end
-git
